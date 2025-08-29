@@ -9,7 +9,7 @@ function btnSlider({ open }: { open: boolean }) {
     <nav className="mt-4 px-2 flex flex-col gap-2">
       <Link
         to={"/dashboard"}
-        className={`w-full py-2 px-4 flex ${
+        className={`w-full py-2 px-4 flex hover:shadow-lg ${
           open ? "justify-start" : "justify-center"
         } items-center border-gray-200 font-bold rounded-lg hover:bg-gray-100 transition-all`}
       >
@@ -20,7 +20,7 @@ function btnSlider({ open }: { open: boolean }) {
       </Link>
       <Link
         to={"/speedtest"}
-        className={`w-full py-2 px-4 flex ${
+        className={`w-full py-2 px-4 flex hover:shadow-lg ${
           open ? "justify-start" : "justify-center"
         } items-center border-gray-200 font-bold rounded-lg hover:bg-gray-100 transition-all`}
       >
@@ -31,7 +31,7 @@ function btnSlider({ open }: { open: boolean }) {
       </Link>
       <Link
         to={"/backup"}
-        className={`w-full py-2 px-4 flex ${
+        className={`w-full py-2 px-4 flex hover:shadow-lg ${
           open ? "justify-start" : "justify-center"
         } items-center border-gray-200 font-bold rounded-lg hover:bg-gray-100 transition-all`}
       >
@@ -42,7 +42,7 @@ function btnSlider({ open }: { open: boolean }) {
       </Link>
       <Link
         to={"/monitor"}
-        className={`w-full py-2 px-4 flex ${
+        className={`w-full py-2 px-4 flex hover:shadow-lg ${
           open ? "justify-start" : "justify-center"
         } items-center border-gray-200 font-bold rounded-lg hover:bg-gray-100 transition-all`}
       >

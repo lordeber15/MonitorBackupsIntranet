@@ -1,20 +1,55 @@
-function SpeedTests() {
-  medirVelocidad();
-  return <div className="p-4">SpeedTest</div>;
+import { useEffect, useState } from "react";
+import SpeedTest from "@cloudflare/speedtest";
+
+// 📌 Creamos la interfaz según lo que devuelve getSummary()
+interface SpeedTestSummary {
+  download: number;
+  upload: number;
+  latency: number;
+  jitter: number;
+  downLoadedLatency: number;
+  downLoadedJitter: number;
+  upLoadedLatency: number;
+  upLoadedJitter: number;
 }
-async function medirVelocidad() {
-  const archivo = "https://nbg1-speed.hetzner.com/100MB.bin"; // archivo de prueba
-  const inicio = new Date().getTime();
 
-  const response = await fetch(archivo);
-  const blob = await response.blob();
-  const fin = new Date().getTime();
+// 📌 Creamos un tipo para el resultado de SpeedTest
+interface SpeedTestResult {
+  getSummary: () => SpeedTestSummary;
+}
 
-  const duracion = (fin - inicio) / 1000; // segundos
-  const tamanioMB = blob.size / (1024 * 1024);
-  const velocidadMbps = (tamanioMB / duracion) * 8;
+function SpeedTests() {
+  const [results, setResults] = useState<SpeedTestSummary | null>(null);
 
-  console.log(`Velocidad: ${velocidadMbps.toFixed(2)} Mbps`);
+  useEffect(() => {
+    const st = new SpeedTest();
+
+    // ✅ Tipamos res como SpeedTestResult en lugar de any
+    (st as any).onFinish = (res: SpeedTestResult) => {
+  const summary = res.getSummary();
+  setResults(summary);
+  };
+
+    st.play();
+
+    
+  }, []);
+
+  return (
+    <div>
+      <h2>Resultados SpeedTest</h2>
+      {results ? (
+        <ul>
+          <li><strong>Descarga:</strong> {(results.download / 1e6).toFixed(2)} Mbps</li>
+          <li><strong>Subida:</strong> {(results.upload / 1e6).toFixed(2)} Mbps</li>
+          <li><strong>Latencia:</strong> {results.latency.toFixed(2)} ms</li>
+          <li><strong>Jitter:</strong> {results.jitter.toFixed(2)} ms</li>
+        </ul>
+      ) : (
+        <p>Ejecutando test...</p>
+      )}
+    </div>
+  );
 }
 
 export default SpeedTests;

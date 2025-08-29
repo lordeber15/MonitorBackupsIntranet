@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router";
 import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebar";
 import Dashboard from "./pages/dashboard";
-import Test from "./pages/SpeedTests";
+import Test from "./pages/speedTests";
 import Login from "./pages/login";
 
 function App() {

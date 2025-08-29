@@ -7,7 +7,7 @@ function Slider() {
 
   return (
     <div
-      className={`h-screen transition-all duration-300 shadow ${
+      className={`h-screen transition-all duration-500 shadow ${
         isOpen ? "w-72" : "w-20"
       }`}
     >
