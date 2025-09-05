@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@cloudflare/speedtest": "^1.6.0",
+    "@extractus/article-extractor": "^8.0.19",
     "@tailwindcss/vite": "^4.1.12",
     "axios": "^1.11.0",
     "fast-speedtest-api": "^0.3.2",
